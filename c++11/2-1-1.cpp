@@ -18,6 +18,7 @@
 #include <iostream>
 using namespace std;
 
+// 平台信息相关的宏越丰富，代码的多平台支持越准确
 int main() {
     cout << "Standard Clib: " << __STDC_HOSTED__ << endl; // 1
     cout << "Standard C: " << __STDC__ << endl; // 1
