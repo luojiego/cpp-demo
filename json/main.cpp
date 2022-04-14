@@ -24,7 +24,7 @@ using namespace std;
 using json = nlohmann::json;
 
 int main() {
-    auto j3 = json::parse("{ \"happy\": true, \"pi\": 3.141, \"id\": 1 }");
+    auto j3 = json::parse("{ \"happy\": true, \"pi\": -3.141, \"id\": 1 }");
     cout << j3 << endl;
     cout << "happy: " << j3["happy"] << endl;
     cout << "size: " << j3.size() << endl;
