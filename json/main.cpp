@@ -23,7 +23,7 @@
 using namespace std;
 using json = nlohmann::json;
 
-int main() {
+int main(int argc, char** argv) {
     auto j3 = json::parse("{ \"happy\": true, \"pi\": -3.141, \"id\": 1 }");
     cout << j3 << endl;
     cout << "happy: " << j3["happy"] << endl;
@@ -52,5 +52,19 @@ int main() {
     auto result = json::parse(j.dump());
     cout << result["money"].type() << endl;
     */
+    // 使用 R 模式，这个也是非法的格式     
+    auto message = R"(
+        { \"happy\": true, \"pi\": -3.141, \"id\": 1 }
+    )";
+
+    auto invalid = "{\"VERSION\":\"1\",\"Save\":21,\"RescueAncientGod\":8001,\"APNotEnough\":10021,\"Evilforest\":13031,\"UnlockingPlunder\":14121,\"PlunderFighting\":21121,\"PlunderWin\":22021,\"PlunderFail\":23031,\"PurificationHouse\":2House\":20011,\"DailyChest";
+    cout << std::boolalpha << json::accept(message) << endl;
+    cout << std::boolalpha << json::accept(invalid) << endl;
+
+    // 重大发现 从命令传入的双引号都要转义，否则都会被移除
+    if (argc > 1) {
+        cout << argv[1] << endl;
+        cout << std::boolalpha << "argv[1] is vaild json: " << json::accept(argv[1]) << endl;
+    }
     return 0;
 }
